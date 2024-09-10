@@ -4,54 +4,53 @@ using UnityEngine;
 
 public class Movimiento : MonoBehaviour
 {
-    public float speed = 5f;          
-    public float jumpForce = 5f;      
-    public LayerMask groundMask;      
+    public float speed = 5.0f;
+    public float gravity = -9.81f;
+    public float jumpHeight = 1.5f;
+    public GameObject Linterna;
 
-    private Rigidbody rb;             
-    private bool isGrounded;          
+    private CharacterController controller;
+    private Vector3 velocity;
+    private bool isGrounded;
+    private Light linternaLight;
 
     void Start()
     {
-     
-        rb = GetComponent<Rigidbody>();
+        controller = GetComponent<CharacterController>();
+
+      
+        if (Linterna != null)
+        {
+            linternaLight = Linterna.GetComponent<Light>();
+        }
     }
 
     void Update()
     {
-
-        Move();
-        Jump();
-    }
-
-    void Move()
-    {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-
-   
-        Vector3 direction = transform.right * horizontal + transform.forward * vertical;
-
-  
-        transform.position += direction * speed * Time.deltaTime;
-    }
-
-    void Jump()
-    {
-    
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, 1.1f, groundMask);
-
-     
-        if (isGrounded && Input.GetKeyDown(KeyCode.Space))
+       
+        if (Input.GetKeyDown(KeyCode.F) && linternaLight != null)
         {
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            linternaLight.enabled = !linternaLight.enabled;
         }
-    }
 
+        isGrounded = controller.isGrounded;
+        if (isGrounded && velocity.y < 0)
+        {
+            velocity.y = -2f;
+        }
 
-    void OnColissionEnter(Collision collision)
-    {
-        rb.velocity=Vector3.zero;   
-        rb.angularVelocity=Vector3.zero;
+        float x = Input.GetAxis("Horizontal");
+        float z = Input.GetAxis("Vertical");
+
+        Vector3 move = transform.right * x + transform.forward * z;
+        controller.Move(move * speed * Time.deltaTime);
+
+        if (Input.GetButtonDown("Jump") && isGrounded)
+        {
+            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+        }
+
+        velocity.y += gravity * Time.deltaTime;
+        controller.Move(velocity * Time.deltaTime);
     }
 }
