@@ -1,24 +1,47 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class Energia : MonoBehaviour
 {
-    public int numeroDeBaterias = 3; 
-    public float duracionBateria = 30f; 
-    private float bateriaRestante; 
-    private bool lamparaEncendida = false; 
+    public int numeroDeBaterias = 3;
+    public float duracionBateria = 30f;
+    private float bateriaRestante;
+    private bool lamparaEncendida = false;
+
+    public GameObject linternaSpotlight;
+    public Text bateriasText;
+
+    public float cooldownTiempo = 1f; 
+    private float tiempoDesdeUltimoUso;
 
     void Start()
     {
-   
         bateriaRestante = duracionBateria;
+        linternaSpotlight.SetActive(false);
+        ActualizarTextoBaterias();
+        tiempoDesdeUltimoUso = cooldownTiempo; 
     }
 
     void Update()
     {
+        tiempoDesdeUltimoUso += Time.deltaTime;
+
+   
+        if (Input.GetKeyDown(KeyCode.F) && tiempoDesdeUltimoUso >= cooldownTiempo)
+        {
+
+            if (lamparaEncendida)
+            {
+                ApagarLampara();
+            }
+            else
+            {
+                EncenderLampara();
+            }
+        }
+
     
         if (lamparaEncendida)
         {
@@ -26,12 +49,13 @@ public class Energia : MonoBehaviour
         }
     }
 
-
     public void EncenderLampara()
     {
         if (numeroDeBaterias > 0)
         {
             lamparaEncendida = true;
+            linternaSpotlight.SetActive(true);
+            tiempoDesdeUltimoUso = 0f; 
         }
         else
         {
@@ -39,12 +63,12 @@ public class Energia : MonoBehaviour
         }
     }
 
-   
     public void ApagarLampara()
     {
         lamparaEncendida = false;
+        linternaSpotlight.SetActive(false);
+        tiempoDesdeUltimoUso = 0f;
     }
-
 
     private void ConsumirBateria(float tiempo)
     {
@@ -54,8 +78,9 @@ public class Energia : MonoBehaviour
 
             if (bateriaRestante <= 0)
             {
-             
                 numeroDeBaterias--;
+                ActualizarTextoBaterias();
+
                 if (numeroDeBaterias > 0)
                 {
                     bateriaRestante = duracionBateria;
@@ -67,5 +92,10 @@ public class Energia : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void ActualizarTextoBaterias()
+    {
+        bateriasText.text = "Baterías: " + numeroDeBaterias;
     }
 }
