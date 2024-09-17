@@ -13,6 +13,7 @@ public class Energia : MonoBehaviour
     public GameObject linternaSpotlight;
     public Text bateriasText;
 
+
     public float cooldownTiempo = 1f; 
     private float tiempoDesdeUltimoUso;
 
@@ -97,5 +98,26 @@ public class Energia : MonoBehaviour
     private void ActualizarTextoBaterias()
     {
         bateriasText.text = "Baterías: " + numeroDeBaterias;
+ 
+    
     }
+
+    public bool AddBatery()
+    {
+        if (numeroDeBaterias < 3)
+        {
+            numeroDeBaterias++;
+            ActualizarTextoBaterias();
+            return true;
+        }
+        else
+        {
+            Debug.Log("Linterna llena");
+            return false;
+
+        }
+            
+    }
+
 }
+
