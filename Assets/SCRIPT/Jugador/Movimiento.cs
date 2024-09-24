@@ -8,8 +8,9 @@ public class Movimiento : MonoBehaviour
     public float speed = 2.0f;
     public float gravity = -9.81f;
     public float jumpHeight = 1.5f;
-    public int maxStamina = 100;
-    public int stamina;
+    public float stamina;
+    public float staminaIncrease;
+    public float staminaDecrease;
 
 
     private CharacterController controller;
@@ -19,7 +20,6 @@ public class Movimiento : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
-        stamina = maxStamina; 
     }
 
     void Update()
@@ -39,15 +39,23 @@ public class Movimiento : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift) && stamina > 0)
         {
             speed = speedOrigin +3;
+
+            stamina -= (Time.deltaTime * staminaDecrease);
+
+            if (stamina <= 0.0f)
+            {
+                speed = 0.5f;
+            }
           
         }
         else
         {
             speed = speedOrigin; 
-            if (stamina < maxStamina)
+            if (stamina <= 10)
             {
-   
+                stamina += (Time.deltaTime * staminaIncrease);
             }
+
         }
 
 
