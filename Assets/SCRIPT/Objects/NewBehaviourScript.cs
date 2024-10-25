@@ -18,6 +18,6 @@ public class NewBehaviourScript : MonoBehaviour
 
     public void prueba()
     {
-        Debug.Log("prueba");    
+        Debug.Log("INTERRACION EXITOSA");    
     }
 }
