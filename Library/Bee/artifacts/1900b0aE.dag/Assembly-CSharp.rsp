@@ -360,6 +360,7 @@
 "Assets/Energia.cs"
 "Assets/Lampara.cs"
 "Assets/Parpadeo.cs"
+"Assets/SCRIPT/Enemigos/Mom.cs"
 "Assets/SCRIPT/Jugador/InteractableObject.cs"
 "Assets/SCRIPT/Jugador/interactor.cs"
 "Assets/SCRIPT/Jugador/Movimiento.cs"
