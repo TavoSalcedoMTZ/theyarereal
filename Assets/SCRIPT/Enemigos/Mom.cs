@@ -10,6 +10,7 @@ public class Mom : MonoBehaviour
 
     void Update()
     {
+        
         // Incrementar el ángulo basado en el tiempo y la velocidad
         angle += speed * Time.deltaTime;
 
@@ -19,6 +20,6 @@ public class Mom : MonoBehaviour
 
         // Actualizar la posición del enemigo
         transform.position = new Vector3(x, transform.position.y, z);
+        
     }
-}
 }

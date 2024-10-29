@@ -1,5 +1,1 @@
-<<<<<<< Updated upstream
-C:\Users\Alumnos\Desktop\theyarereal
-=======
-C:\Users\Alumnos\Documents\GitHub\theyarereal
->>>>>>> Stashed changes
+C:\Users\ALUMNOS\Documents\juego\theyarereal
