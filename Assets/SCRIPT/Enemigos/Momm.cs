@@ -57,7 +57,7 @@ public class Momm : MonoBehaviour
             transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 2);
             animador.SetBool("walk", false);
             animador.SetBool("run", true);
-            transform.Translate(Vector3.forward *  3* Time.deltaTime);
+            transform.Translate(Vector3.forward * 4 * Time.deltaTime);
         }
     }
 

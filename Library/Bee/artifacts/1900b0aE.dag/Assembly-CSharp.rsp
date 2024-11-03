@@ -363,6 +363,7 @@
 "Assets/SCRIPT/Jugador/Movimiento.cs"
 "Assets/SCRIPT/Jugador/RotationCamara.cs"
 "Assets/SCRIPT/menu/CambiarNivel.cs"
+"Assets/SCRIPT/menu/cerrar.cs"
 "Assets/SCRIPT/Objects/Battery.cs"
 "Assets/SCRIPT/Objects/InteractableObject.cs"
 "Assets/SCRIPT/Objects/NewBehaviourScript.cs"
