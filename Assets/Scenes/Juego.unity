@@ -490,6 +490,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d09e081355f659345beafb1f8b8d81d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Botella: {fileID: 0}
 --- !u!1 &29996285 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7831773516784039319, guid: e7992f78dc89364448961b219b29c2fb, type: 3}
@@ -5222,6 +5223,7 @@ GameObject:
   - component: {fileID: 484787365}
   - component: {fileID: 484787364}
   - component: {fileID: 484787363}
+  - component: {fileID: 484787366}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -5315,6 +5317,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 484787361}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &484787366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 484787361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35cbe474a384ac7449f1de4392cb931a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &486153941 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -1236545539233199235, guid: e7992f78dc89364448961b219b29c2fb, type: 3}
@@ -18272,7 +18286,6 @@ GameObject:
   - component: {fileID: 1607036113}
   - component: {fileID: 1607036116}
   - component: {fileID: 1607036115}
-  - component: {fileID: 1607036114}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -18295,27 +18308,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1259171792}
   m_LocalEulerAnglesHint: {x: 86.176, y: -197.607, z: -197.645}
---- !u!65 &1607036114
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1607036112}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1607036115
 MeshRenderer:
   m_ObjectHideFlags: 0
